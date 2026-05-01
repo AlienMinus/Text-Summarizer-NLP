@@ -13,7 +13,7 @@ origins = [
     "http://localhost:5500",
     "http://127.0.0.1:3000",   # React (if used later)
     "http://localhost:3000",
-    "https://text-summarizer-by-alienminus.vercel.app/",
+    "https://text-summarizer-by-alienminus.vercel.app",
     "*"  # ⚠️ Allow all (for development only)
 ]
 
