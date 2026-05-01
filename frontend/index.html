@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Text Summarizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🧠 AI Text Summarizer</h1>
+    <p class="subtitle">Powered by NLP + GAN-inspired scoring</p>
+
+    <textarea id="inputText" placeholder="Paste your long text here..."></textarea>
+
+    <div class="controls">
+        <button onclick="summarizeText()">Summarize</button>
+        <button class="clear" onclick="clearText()">Clear</button>
+    </div>
+
+    <div id="loading" class="loading hidden">⏳ Processing...</div>
+
+    <div class="output">
+        <h3>Summary</h3>
+        <p id="summaryText">Your summary will appear here...</p>
+
+        <h3>Quality Score</h3>
+        <p id="scoreText">--</p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
