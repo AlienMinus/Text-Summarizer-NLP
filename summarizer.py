@@ -2,7 +2,7 @@ from transformers import pipeline
 
 # Load once (IMPORTANT for performance)
 summarizer = pipeline(
-    "summarization",
+    "text2text-generation",
     model="facebook/bart-large-cnn",
     device=-1  # change to 0 if GPU available
 )
