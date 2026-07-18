@@ -1,4 +1,4 @@
-const API_URL = "https://text-summarizer-nlp-yyn2.onrender.com/summarize";
+const API_URL = "https://text-summarizer-nlp-1.onrender.com/summarize";
 
 async function summarizeText() {
     const text = document.getElementById("inputText").value;
