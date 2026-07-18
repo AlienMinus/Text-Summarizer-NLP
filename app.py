@@ -1,4 +1,5 @@
 import os
+import socket
 import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -52,6 +53,23 @@ def summarize(input: TextInput):
         "quality_score": score
     }
 
+def get_port(default_port: int = 8000) -> int:
+    port = int(os.environ.get("PORT", default_port))
+    if port <= 0:
+        return default_port
+    return port
+
+
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    port = get_port()
+    try:
+        uvicorn.run(app, host="0.0.0.0", port=port)
+    except OSError as exc:
+        if exc.errno == 10048:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.bind(("127.0.0.1", 0))
+                free_port = s.getsockname()[1]
+            print(f"Port {port} is busy; retrying on {free_port}")
+            uvicorn.run(app, host="127.0.0.1", port=free_port)
+        else:
+            raise
